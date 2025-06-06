@@ -5,63 +5,211 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Riegos Alcaudete de la Jara 2024</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background-color: #f4f4f4;
+    :root {
+      --primary-color: #3498db;
+      --secondary-color: #2ecc71;
+      --accent-color: #e74c3c;
+      --dark-color: #2c3e50;
+      --light-color: #ecf0f1;
+      --gray-color: #95a5a6;
+      --special-color: #9b59b6;
     }
-    header, footer {
-      background-color: #333;
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+    }
+    
+    header {
+      background: linear-gradient(135deg, var(--dark-color), var(--primary-color));
       color: white;
       text-align: center;
+      padding: 25px 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+      font-weight: 600;
+    }
+    
+    footer {
+      background-color: var(--dark-color);
+      color: white;
+      text-align: center;
+      padding: 15px;
+      font-size: 0.9rem;
+      margin-top: 20px;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
       padding: 20px;
     }
-    nav {
+    
+    /* Navegación de meses */
+    #month-nav {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      background-color: #e2e2e2;
-      padding: 10px;
+      background-color: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      margin: 20px auto;
+      max-width: 95%;
     }
-    nav button {
+    
+    #month-nav button {
       margin: 5px;
-      padding: 10px 15px;
+      padding: 12px 20px;
       font-size: 16px;
+      font-weight: 500;
       cursor: pointer;
       border: none;
-      border-radius: 5px;
-      background-color: #ccc;
-      transition: background-color 0.3s;
+      border-radius: 8px;
+      background-color: var(--light-color);
+      color: var(--dark-color);
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
-    nav button.active,
-    nav button:hover {
-      background-color: #007BFF;
+    
+    #month-nav button.active,
+    #month-nav button:hover {
+      background-color: var(--primary-color);
       color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
     }
+    
+    /* Contenedor de botones de ubicaciones */
     .buttons-container {
       text-align: center;
-      margin: 20px;
+      margin: 30px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      max-width: 95%;
     }
+    
+    .buttons-container h2 {
+      color: var(--dark-color);
+      margin-top: 0;
+      margin-bottom: 20px;
+      font-size: 1.4rem;
+    }
+    
+    .buttons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 12px;
+      justify-items: center;
+    }
+    
     .buttons-container button {
-      margin: 5px;
-      padding: 10px 15px;
+      margin: 0;
+      padding: 12px 15px;
       font-size: 14px;
+      font-weight: 500;
       border: none;
-      border-radius: 5px;
-      background-color: #007BFF;
+      border-radius: 8px;
+      background-color: var(--primary-color);
       color: white;
       cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
+    
     .buttons-container button:hover {
-      background-color: #0056b3;
+      background-color: #2980b9;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
     }
+    
+    /* Estilos especiales para botones específicos */
+    .buttons-container button[data-location="Cementerio"] {
+      background-color: var(--secondary-color);
+    }
+    
+    .buttons-container button[data-location="Cementerio"]:hover {
+      background-color: #c0392b;
+    }
+    
+    .buttons-container button[data-location="Carretera"] {
+      background-color: var(--secondary-color);
+    }
+    
+    .buttons-container button[data-location="Carretera"]:hover {
+      background-color: #27ae60;
+    }
+    
+    .buttons-container button[data-location="Silo"] {
+      background-color: var(--secondary-color);
+    }
+    
+    .buttons-container button[data-location="Silo"]:hover {
+      background-color: #8e44ad;
+    }
+    
+    /* Visor */
+    .viewer-container {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 95%;
+    }
+    
+    .viewer-container h2 {
+      color: var(--dark-color);
+      margin-top: 0;
+      margin-bottom: 15px;
+      font-size: 1.4rem;
+    }
+    
     iframe {
       width: 100%;
       height: 70vh;
       border: none;
-      border-radius: 5px;
-      background-color: white;
-      margin-bottom: 20px;
+      border-radius: 8px;
+      background-color: #f8f9fa;
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+    }
+    
+    .empty-state {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--gray-color);
+    }
+    
+    .empty-state i {
+      font-size: 3rem;
+      margin-bottom: 15px;
+      display: block;
+      color: var(--light-color);
+    }
+    
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.5rem;
+      }
+      
+      #month-nav button {
+        padding: 10px 15px;
+        font-size: 14px;
+      }
+      
+      .buttons-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      }
     }
   </style>
 </head>
@@ -71,14 +219,22 @@
   <h1>Riegos automáticos de Alcaudete de la Jara - 2024</h1>
 </header>
 
-<!-- Meses -->
-<nav id="month-nav"></nav>
+<div class="container">
+  <!-- Meses -->
+  <nav id="month-nav"></nav>
 
-<!-- Botones dinámicos -->
-<div class="buttons-container" id="buttons-container"></div>
+  <!-- Botones dinámicos -->
+  <div class="buttons-container">
+    <h2 id="month-title">Seleccione ubicación</h2>
+    <div class="buttons-grid" id="buttons-container"></div>
+  </div>
 
-<!-- Visor -->
-<iframe id="iframe-viewer" src=""></iframe>
+  <!-- Visor -->
+  <div class="viewer-container">
+    <h2>Documento seleccionado</h2>
+    <iframe id="iframe-viewer" src=""></iframe>
+  </div>
+</div>
 
 <footer>
   <p>&copy; 2024 Diseño de AMT. Todos los derechos reservados.</p>
@@ -87,16 +243,16 @@
 <script>
   const data = {
     "Junio": {
-    "Cementerio": "https://docs.google.com/spreadsheets/d/11sZiLikFgnz_wAiwBJDti7PpEjn6TF2lFblgDdlQ0tY/edit?usp=sharing",
-    "Overo": "https://docs.google.com/spreadsheets/d/19f2wt9hi260K_cIFb9FKvpTdUXOI9Orq5xsesfUojZ0/edit?usp=sharing",
-    "Parada": "https://docs.google.com/spreadsheets/d/1esMcMvNEyAIp16lEOFPdclp1ok9vR-EHflnxAMmwzGQ/edit?usp=sharing",
-    "Piscina": "https://docs.google.com/spreadsheets/d/1khXGdrqFD76uQGj4ssHt6PoNC5lo_UsMgpdo2kOUNpw/edit?usp=sharing",
-    "Protección Civil": "https://docs.google.com/spreadsheets/d/19g5a6WCAt1z9zpMOazvxBvnDk3IeEznoMwTgP978alM/edit?usp=sharing",
-    "Toros": "https://docs.google.com/spreadsheets/d/1mzDEgf9WANAbOVpHLQzD8STge161TQolfkwiscvim_g/edit?usp=sharing",
-    "Carretera": "https://docs.google.com/spreadsheets/d/1bGzlaBYI-9Fs7IMUtnwx_MI7aufO7CPqmoqM5POOEcQ/edit?usp=sharing",
-    "Dia": "https://docs.google.com/spreadsheets/d/1nqtvfiFq2xewesDsP4LR3KA7nADgsEYwbUXAy9EPa_o/edit?usp=sharing",
-    "Silo": "https://docs.google.com/spreadsheets/d/1QqS7fjb4SO1nQQvxnv5oaaPzIdR65qeevJarv0vXGqs/edit?usp=sharing"
-},
+      "Cementerio": "https://docs.google.com/spreadsheets/d/11sZiLikFgnz_wAiwBJDti7PpEjn6TF2lFblgDdlQ0tY/edit?usp=sharing",
+      "Overo": "https://docs.google.com/spreadsheets/d/19f2wt9hi260K_cIFb9FKvpTdUXOI9Orq5xsesfUojZ0/edit?usp=sharing",
+      "Parada": "https://docs.google.com/spreadsheets/d/1esMcMvNEyAIp16lEOFPdclp1ok9vR-EHflnxAMmwzGQ/edit?usp=sharing",
+      "Piscina": "https://docs.google.com/spreadsheets/d/1khXGdrqFD76uQGj4ssHt6PoNC5lo_UsMgpdo2kOUNpw/edit?usp=sharing",
+      "Protección Civil": "https://docs.google.com/spreadsheets/d/19g5a6WCAt1z9zpMOazvxBvnDk3IeEznoMwTgP978alM/edit?usp=sharing",
+      "Toros": "https://docs.google.com/spreadsheets/d/1mzDEgf9WANAbOVpHLQzD8STge161TQolfkwiscvim_g/edit?usp=sharing",
+      "Carretera": "https://docs.google.com/spreadsheets/d/1bGzlaBYI-9Fs7IMUtnwx_MI7aufO7CPqmoqM5POOEcQ/edit?usp=sharing",
+      "Dia": "https://docs.google.com/spreadsheets/d/1nqtvfiFq2xewesDsP4LR3KA7nADgsEYwbUXAy9EPa_o/edit?usp=sharing",
+      "Silo": "https://docs.google.com/spreadsheets/d/1QqS7fjb4SO1nQQvxnv5oaaPzIdR65qeevJarv0vXGqs/edit?usp=sharing"
+    },
     "Julio": {
       "Cementerio": "https://docs.google.com/spreadsheets/d/1A0o6ivF5_ZIwspUyG7QIfOsLOdyS_I_CxSRICqFyILs/edit?usp=drive_link",
       "Overo": "https://docs.google.com/spreadsheets/d/1he_-bUs6FTiZrPYP1nkH8Ag0tOpbYk-xsdJ59bxNhug/edit?usp=drive_link",
@@ -109,49 +265,49 @@
       "Silo": "https://docs.google.com/spreadsheets/d/1FAaE-pnHWlPvhxrxhDQ0o3cZ1xcMGYI1dbxKXTjfbYY/edit?usp=drive_link"
     },
     "Agosto": {
-    "Cementerio": "https://docs.google.com/spreadsheets/d/1Sgv7UHgpsUg52WrUEq2MrKxIfK7eGQuOLPBEr6AVYuA/edit?usp=drive_link",
-    "Overo": "https://docs.google.com/spreadsheets/d/1iVadhI5zPqOsXOXQhjroMOPcatyAzm3TIrgLSqQiCrc/edit?usp=drive_link",
-    "Parada": "https://docs.google.com/spreadsheets/d/16bAsoWH4FJFO0BFLPZmPtdLL8IHHD8Lt8w5SjQrO1uI/edit?usp=drive_link",
-    "Piscina": "https://docs.google.com/spreadsheets/d/1h8bvT86s-ItxrPl598HLurJ99k4kUxQlC7PmNgTkMH8/edit?usp=drive_link",
-    "Protección Civil": "https://docs.google.com/spreadsheets/d/1B4K4JhliGHNmM4n6HoyvRtuNapyot4j0ODAza0aHS_8/edit?usp=drive_link",
-    "Toros": "https://docs.google.com/spreadsheets/d/1s45kJH2DbpDxTBIlnxuxjKfx-CdZqdRasAdmf0J91vw/edit?usp=drive_link",
-    "Carretera": "https://docs.google.com/spreadsheets/d/16pS-QILtxtAOIv_MrV5wXjRINGqgTTo475kvcd4nhPE/edit?usp=drive_link",
-    "Dia": "https://docs.google.com/spreadsheets/d/11SP8vd89LndkPEi850kNWQSF97EX6_sDr91oLWbtPQs/edit?usp=sharing",
-    "Silo": "https://docs.google.com/spreadsheets/d/1cZ8cP5SWBm-iWaFbTxoLcFYKhzM9_aWre3ZQLHGojvA/edit?usp=drive_link"
-},
+      "Cementerio": "https://docs.google.com/spreadsheets/d/1Sgv7UHgpsUg52WrUEq2MrKxIfK7eGQuOLPBEr6AVYuA/edit?usp=drive_link",
+      "Overo": "https://docs.google.com/spreadsheets/d/1iVadhI5zPqOsXOXQhjroMOPcatyAzm3TIrgLSqQiCrc/edit?usp=drive_link",
+      "Parada": "https://docs.google.com/spreadsheets/d/16bAsoWH4FJFO0BFLPZmPtdLL8IHHD8Lt8w5SjQrO1uI/edit?usp=drive_link",
+      "Piscina": "https://docs.google.com/spreadsheets/d/1h8bvT86s-ItxrPl598HLurJ99k4kUxQlC7PmNgTkMH8/edit?usp=drive_link",
+      "Protección Civil": "https://docs.google.com/spreadsheets/d/1B4K4JhliGHNmM4n6HoyvRtuNapyot4j0ODAza0aHS_8/edit?usp=drive_link",
+      "Toros": "https://docs.google.com/spreadsheets/d/1s45kJH2DbpDxTBIlnxuxjKfx-CdZqdRasAdmf0J91vw/edit?usp=drive_link",
+      "Carretera": "https://docs.google.com/spreadsheets/d/16pS-QILtxtAOIv_MrV5wXjRINGqgTTo475kvcd4nhPE/edit?usp=drive_link",
+      "Dia": "https://docs.google.com/spreadsheets/d/11SP8vd89LndkPEi850kNWQSF97EX6_sDr91oLWbtPQs/edit?usp=sharing",
+      "Silo": "https://docs.google.com/spreadsheets/d/1cZ8cP5SWBm-iWaFbTxoLcFYKhzM9_aWre3ZQLHGojvA/edit?usp=drive_link"
+    },
     "Septiembre": {
-    "Cementerio": "https://docs.google.com/spreadsheets/d/1SOTtx0LiHp9I014SlvVjEcRGNigshACGaS7NSzEkDuc/edit?gid=1720934086#gid=1720934086",
-    "Overo": "https://docs.google.com/spreadsheets/d/1dYlwGhkA2nEcms4mJPw-iWDjm5qm2tHOa8PeP-OVpDM/edit?usp=sharing",
-    "Parada": "https://docs.google.com/spreadsheets/d/1rbU3S4b7IqnghtuSyb9MYeXsEDF6DsUcvzfEzFoo2Ws/edit?usp=sharing",
-    "Piscina": "https://docs.google.com/spreadsheets/d/1DvXP58oc9K4iebjLsJfKmdjKv8uk58Be1lrL_uYgLgY/edit?usp=sharing",
-    "Protección Civil": "https://docs.google.com/spreadsheets/d/18VnUbgfkw1yDr2R3IiyuWiXc3zeMz06hjdvfNeXmvsI/edit?usp=sharing",
-    "Toros": "https://docs.google.com/spreadsheets/d/11DVTxFR8fam-myYlj57D1SVSUuAG7Ed7xIhgDAafe-4/edit?usp=sharing",
-    "Carretera": "https://docs.google.com/spreadsheets/d/1P-8r3O9xBB6-KHH7i-S28h49JmYz7hNVNKwgKIF2Iv8/edit?usp=sharing",
-    "Dia": "https://docs.google.com/spreadsheets/d/1W5PC_itrNfV8SSrsBU08VwElUkCviwgtnrLO4_0lKxc/edit?usp=sharing",
-    "Silo": "https://docs.google.com/spreadsheets/d/1bNrHR955eKgTFB0y378xQFR8SuhlQk6ltE9RSteeeEc/edit?usp=sharing"
-},
+      "Cementerio": "https://docs.google.com/spreadsheets/d/1SOTtx0LiHp9I014SlvVjEcRGNigshACGaS7NSzEkDuc/edit?gid=1720934086#gid=1720934086",
+      "Overo": "https://docs.google.com/spreadsheets/d/1dYlwGhkA2nEcms4mJPw-iWDjm5qm2tHOa8PeP-OVpDM/edit?usp=sharing",
+      "Parada": "https://docs.google.com/spreadsheets/d/1rbU3S4b7IqnghtuSyb9MYeXsEDF6DsUcvzfEzFoo2Ws/edit?usp=sharing",
+      "Piscina": "https://docs.google.com/spreadsheets/d/1DvXP58oc9K4iebjLsJfKmdjKv8uk58Be1lrL_uYgLgY/edit?usp=sharing",
+      "Protección Civil": "https://docs.google.com/spreadsheets/d/18VnUbgfkw1yDr2R3IiyuWiXc3zeMz06hjdvfNeXmvsI/edit?usp=sharing",
+      "Toros": "https://docs.google.com/spreadsheets/d/11DVTxFR8fam-myYlj57D1SVSUuAG7Ed7xIhgDAafe-4/edit?usp=sharing",
+      "Carretera": "https://docs.google.com/spreadsheets/d/1P-8r3O9xBB6-KHH7i-S28h49JmYz7hNVNKwgKIF2Iv8/edit?usp=sharing",
+      "Dia": "https://docs.google.com/spreadsheets/d/1W5PC_itrNfV8SSrsBU08VwElUkCviwgtnrLO4_0lKxc/edit?usp=sharing",
+      "Silo": "https://docs.google.com/spreadsheets/d/1bNrHR955eKgTFB0y378xQFR8SuhlQk6ltE9RSteeeEc/edit?usp=sharing"
+    },
     "Octubre": {
-    "Cementerio": "https://docs.google.com/spreadsheets/d/1db06p-LKd0C9SFKAHeVjQR7Bcj7ml9R_MC_rcK7myhc/edit?usp=drive_link",
-    "Overo": "https://docs.google.com/spreadsheets/d/1Q7Wy17T-jb5ks7tdhOIG5_I07hMl20QGWDvqVM2SY4c/edit?usp=drive_link",
-    "Parada": "https://docs.google.com/spreadsheets/d/1cRWuintaFBWQzYdvtksfHNmJXmbi2wXOFM1v8XeiXls/edit?usp=drive_link",
-    "Piscina": "https://docs.google.com/spreadsheets/d/1pooltLcQOVYruFxGeC5rcaa718IFLI_Yi3pf0XQw2ps/edit?usp=sharing",
-    "Protección Civil": "https://docs.google.com/spreadsheets/d/1FVAEqWbBmEhcxiASSJ13doaQZb6VbdiY98Aq-LhoibU/edit?usp=drive_link",
-    "Toros": "https://docs.google.com/spreadsheets/d/1jqdXrpLA0HmDlsDVoxrHvMBN7wHMYUgGcv_cvtw-ZU8/edit?usp=sharing",
-    "Carretera": "https://docs.google.com/spreadsheets/d/1HpwbW6WV-GeJ54NeCVHCWUluDKNMy_fuT1M8lEB54qs/edit?usp=drive_link",
-    "Dia": "https://docs.google.com/spreadsheets/d/1pooltLcQOVYruFxGeC5rcaa718IFLI_Yi3pf0XQw2ps/edit?usp=drive_link",
-    "Silo": "https://docs.google.com/spreadsheets/d/1O_D9mXAjfYT3zZ4KP1HoDKAXls_BWLfBBJEIUFZLXOQ/edit?usp=drive_link"
-},
+      "Cementerio": "https://docs.google.com/spreadsheets/d/1db06p-LKd0C9SFKAHeVjQR7Bcj7ml9R_MC_rcK7myhc/edit?usp=drive_link",
+      "Overo": "https://docs.google.com/spreadsheets/d/1Q7Wy17T-jb5ks7tdhOIG5_I07hMl20QGWDvqVM2SY4c/edit?usp=drive_link",
+      "Parada": "https://docs.google.com/spreadsheets/d/1cRWuintaFBWQzYdvtksfHNmJXmbi2wXOFM1v8XeiXls/edit?usp=drive_link",
+      "Piscina": "https://docs.google.com/spreadsheets/d/1pooltLcQOVYruFxGeC5rcaa718IFLI_Yi3pf0XQw2ps/edit?usp=sharing",
+      "Protección Civil": "https://docs.google.com/spreadsheets/d/1FVAEqWbBmEhcxiASSJ13doaQZb6VbdiY98Aq-LhoibU/edit?usp=drive_link",
+      "Toros": "https://docs.google.com/spreadsheets/d/1jqdXrpLA0HmDlsDVoxrHvMBN7wHMYUgGcv_cvtw-ZU8/edit?usp=sharing",
+      "Carretera": "https://docs.google.com/spreadsheets/d/1HpwbW6WV-GeJ54NeCVHCWUluDKNMy_fuT1M8lEB54qs/edit?usp=drive_link",
+      "Dia": "https://docs.google.com/spreadsheets/d/1pooltLcQOVYruFxGeC5rcaa718IFLI_Yi3pf0XQw2ps/edit?usp=drive_link",
+      "Silo": "https://docs.google.com/spreadsheets/d/1O_D9mXAjfYT3zZ4KP1HoDKAXls_BWLfBBJEIUFZLXOQ/edit?usp=drive_link"
+    },
     "Noviembre": {
-    "Cementerio": "https://docs.google.com/spreadsheets/d/1oCfV13ZIkidczLsAQIUEpo0mgUUf1WwUQIg2S8W8VOE/edit?usp=sharing",
-  "Overo": "https://docs.google.com/spreadsheets/d/1b6TivEHFYOa27XdQpzE7cSLZ8i32ssqrD3hIfAy8pAw/edit?usp=sharing",
-  "Parada": "https://docs.google.com/spreadsheets/d/1g8nvx6YLWqFvjF5j35TcmL_rz4TlBruAFfnNlRr5AgA/edit?usp=sharing",
-  "Piscina": "https://docs.google.com/spreadsheets/d/1bN7Q5Y85J6dai55-jNLGXDDyJEss2Itj5vc2t-aJggI/edit?usp=sharing",
-  "Protección Civil": "https://docs.google.com/spreadsheets/d/1jY1iY28SZ0HdiGyWemb9MG3RtnNn99nbjI4FhFT_hXQ/edit?usp=sharing",
-  "Toros": "https://docs.google.com/spreadsheets/d/1p37_8MW5xnsN097UpdGQ5A_jHHn0mnQm_mav4V27nog/edit?usp=sharing",
-  "Carretera": "https://docs.google.com/spreadsheets/d/19XzfVO2MlSvM38Ndo-S3isXjf9SdZRfjYu_q4q1v7VA/edit?usp=sharing",
-  "Silo": "https://docs.google.com/spreadsheets/d/1oRmheOavWjovxWC27ygCqXtrawL50rDdYlF5-dpxWb0/edit?usp=sharing",
-  "Día": "https://docs.google.com/spreadsheets/d/1L7QFxoia-jx17w5ZrseBr0nlvvBW8TsZlaeKjjN84g4/edit?usp=drive_link"
-},
+      "Cementerio": "https://docs.google.com/spreadsheets/d/1oCfV13ZIkidczLsAQIUEpo0mgUUf1WwUQIg2S8W8VOE/edit?usp=sharing",
+      "Overo": "https://docs.google.com/spreadsheets/d/1b6TivEHFYOa27XdQpzE7cSLZ8i32ssqrD3hIfAy8pAw/edit?usp=sharing",
+      "Parada": "https://docs.google.com/spreadsheets/d/1g8nvx6YLWqFvjF5j35TcmL_rz4TlBruAFfnNlRr5AgA/edit?usp=sharing",
+      "Piscina": "https://docs.google.com/spreadsheets/d/1bN7Q5Y85J6dai55-jNLGXDDyJEss2Itj5vc2t-aJggI/edit?usp=sharing",
+      "Protección Civil": "https://docs.google.com/spreadsheets/d/1jY1iY28SZ0HdiGyWemb9MG3RtnNn99nbjI4FhFT_hXQ/edit?usp=sharing",
+      "Toros": "https://docs.google.com/spreadsheets/d/1p37_8MW5xnsN097UpdGQ5A_jHHn0mnQm_mav4V27nog/edit?usp=sharing",
+      "Carretera": "https://docs.google.com/spreadsheets/d/19XzfVO2MlSvM38Ndo-S3isXjf9SdZRfjYu_q4q1v7VA/edit?usp=sharing",
+      "Silo": "https://docs.google.com/spreadsheets/d/1oRmheOavWjovxWC27ygCqXtrawL50rDdYlF5-dpxWb0/edit?usp=sharing",
+      "Día": "https://docs.google.com/spreadsheets/d/1L7QFxoia-jx17w5ZrseBr0nlvvBW8TsZlaeKjjN84g4/edit?usp=drive_link"
+    },
     "Diciembre": {
       "Cementerio": "https://docs.google.com/spreadsheets/d/1FpqmssN5qOnYLF8oNr7loS4RhUKT_nvMAGPYfXM-CfI/edit?usp=drive_link",
       "Overo": "https://docs.google.com/spreadsheets/d/1D1-C7ycU6KCDYY2x3jw4jBssU30X12VQRQFsVqwQhZ0/edit?usp=drive_link",
@@ -168,6 +324,7 @@
   const months = Object.keys(data);
   const nav = document.getElementById('month-nav');
   const buttonsContainer = document.getElementById('buttons-container');
+  const monthTitle = document.getElementById('month-title');
   const iframe = document.getElementById('iframe-viewer');
 
   let currentMonth = null;
@@ -180,6 +337,7 @@
         document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         currentMonth = month;
+        monthTitle.textContent = `Ubicaciones - ${month}`;
         loadButtons(month);
         iframe.src = "";
       };
@@ -190,15 +348,28 @@
   function loadButtons(month) {
     buttonsContainer.innerHTML = '';
     const items = data[month];
+    
     if (!items || Object.keys(items).length === 0) {
-      buttonsContainer.innerHTML = '<p>No hay datos disponibles para este mes.</p>';
+      buttonsContainer.innerHTML = `
+        <div class="empty-state">
+          <i>📭</i>
+          <p>No hay datos disponibles para este mes.</p>
+        </div>
+      `;
       return;
     }
+    
     for (const label in items) {
       const btn = document.createElement('button');
       btn.textContent = label;
+      btn.dataset.location = label; // Para los estilos especiales
       btn.onclick = () => {
-        iframe.src = items[label];
+        if (items[label]) {
+          iframe.src = items[label];
+        } else {
+          iframe.src = "";
+          iframe.srcdoc = "<div style='display:flex; justify-content:center; align-items:center; height:100%;'><p style='color:#777;'>No hay documento disponible para esta ubicación</p></div>";
+        }
       };
       buttonsContainer.appendChild(btn);
     }
@@ -206,7 +377,9 @@
 
   // Inicializa con el primer mes
   createMonthButtons();
-  nav.querySelector('button').click();
+  if (nav.querySelector('button')) {
+    nav.querySelector('button').click();
+  }
 </script>
 
 </body>
