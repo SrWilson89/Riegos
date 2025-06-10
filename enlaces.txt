@@ -119,3 +119,17 @@ https://docs.google.com/spreadsheets/d/11o6TE6EpvmjEMZCDh58iMt-zJSEpMcOOzyLKZCtB
 https://docs.google.com/spreadsheets/d/1qVD9Tl-uZoyK-oXUkP7rtdotTpgVEWVNl5cXUmHnO8c/edit?usp=sharing
 
 https://docs.google.com/spreadsheets/d/1DGrS66O0ZGKYDFhrU3R5xXaZsjm7FrPuTULEKd64kVU/edit?usp=sharing
+
+=IMPORTRANGE("https://docs.google.com/spreadsheets/d/1rXQH1_W0b1guhD4irqOOx7YAYqMCwHdmigapSuhNFmM"; "Hoja1!d8")
+
+{
+      "Cementerio": "",
+      "Overo": "",
+      "Parada": "",
+      "Piscina": "",
+      "Protección Civil": "",
+      "Toros": "",
+      "Carretera": "",
+      "Dia": "",
+      "Silo": ""
+    },
