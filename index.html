@@ -3,8 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Riegos Alcaudete de la Jara 2024</title>
+  <meta name="description" content="Gestión de horarios de riego para Alcaudete de la Jara">
+  <meta property="og:title" content="Riegos Alcaudete de la Jara">
+  <title>Riegos Alcaudete de la Jara 2025</title>
   <style>
+    .iframe-loading {
+  background: url('spinner.svg') center no-repeat;
+}
     :root {
   --primary-color: #2563eb;
   --primary-hover: #1d4ed8;
@@ -499,10 +504,22 @@ button:focus-visible {
 </div>
 
 <footer>
-  <p>&copy; 2024 Diseño de AMT. Todos los derechos reservados.</p>
+  <p>&copy; 2025 Diseño de AMT. Todos los derechos reservados.</p>
 </footer>
 
 <script>
+
+// iframe.onerror = () => {
+//   iframe.srcdoc = `<div style="...">Error al cargar el documento</div>`;
+// };
+
+// Al seleccionar mes/ubicación
+//localStorage.setItem('lastMonth', currentMonth);
+
+// Al cargar la página
+//const lastMonth = localStorage.getItem('lastMonth') || months[0];
+
+
   const data = {
   "Junio": {
     "Cementerio": "https://docs.google.com/spreadsheets/d/11sZiLikFgnz_wAiwBJDti7PpEjn6TF2lFblgDdlQ0tY/edit?usp=drive_link",
