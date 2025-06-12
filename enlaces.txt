@@ -133,3 +133,32 @@ https://docs.google.com/spreadsheets/d/1DGrS66O0ZGKYDFhrU3R5xXaZsjm7FrPuTULEKd64
       "Dia": "",
       "Silo": ""
     },
+
+Cementerio
+=IMPORTRANGE("https://docs.google.com/spreadsheets/d/1rXQH1_W0b1guhD4irqOOx7YAYqMCwHdmigapSuhNFmM"; "Hoja1!f1")
+
+Overo
+=IMPORTRANGE("https://docs.google.com/spreadsheets/d/1rXQH1_W0b1guhD4irqOOx7YAYqMCwHdmigapSuhNFmM"; "Hoja1!f2")
+
+Parada
+=IMPORTRANGE("https://docs.google.com/spreadsheets/d/1rXQH1_W0b1guhD4irqOOx7YAYqMCwHdmigapSuhNFmM"; "Hoja1!f3")
+
+Piscina
+=IMPORTRANGE("https://docs.google.com/spreadsheets/d/1rXQH1_W0b1guhD4irqOOx7YAYqMCwHdmigapSuhNFmM"; "Hoja1!f4")
+=IMPORTRANGE("https://docs.google.com/spreadsheets/d/1rXQH1_W0b1guhD4irqOOx7YAYqMCwHdmigapSuhNFmM"; "Hoja1!g4")
+
+Toros
+=IMPORTRANGE("https://docs.google.com/spreadsheets/d/1rXQH1_W0b1guhD4irqOOx7YAYqMCwHdmigapSuhNFmM"; "Hoja1!f6")
+=IMPORTRANGE("https://docs.google.com/spreadsheets/d/1rXQH1_W0b1guhD4irqOOx7YAYqMCwHdmigapSuhNFmM"; "Hoja1!g6")
+
+Carretera
+=IMPORTRANGE("https://docs.google.com/spreadsheets/d/1rXQH1_W0b1guhD4irqOOx7YAYqMCwHdmigapSuhNFmM"; "Hoja1!f7")
+
+Dia
+=IMPORTRANGE("https://docs.google.com/spreadsheets/d/1rXQH1_W0b1guhD4irqOOx7YAYqMCwHdmigapSuhNFmM"; "Hoja1!f8")
+
+Silo
+=IMPORTRANGE("https://docs.google.com/spreadsheets/d/1rXQH1_W0b1guhD4irqOOx7YAYqMCwHdmigapSuhNFmM"; "Hoja1!f9")
+
+proteccion
+=IMPORTRANGE("https://docs.google.com/spreadsheets/d/1rXQH1_W0b1guhD4irqOOx7YAYqMCwHdmigapSuhNFmM"; "Hoja1!f5")    
